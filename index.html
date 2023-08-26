@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature coverter</title>
+    <style>
+        body{
+            padding 50px 100px;
+        }
+        h1{
+            text-align: center;
+        }
+        #container{
+            text-align: center;
+            background-color: #0d690d;
+            padding: 50px;
+        }
+        .input-div{
+            display: inline-block;
+        }
+        .inp{
+            padding: 5px 10px;
+            margin: 10px;
+            font-size: 30px;
+            font-weight: bold;
+            width: 250px;
+            text-align: center;
+        }
+        label{
+            font-size: 22px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature converter</h1>
+    <div id="container">
+        <div class="input-div">
+        <label>celsius</label><br>
+        <input type="number" value="0" id="cel" class="inp">
+    </div>
+        <div class="input-div">
+        <label>farenheit</label><br>
+        <input type="number" value="32" id="fah" class="inp">
+        </div>
+
+    </div>
+    <script>
+        var cel = document.getElementById("cel");
+var fah = document.getElementById("fah");
+
+cel.addEventListener('input', function() {
+    let c = parseFloat(this.value); // Convert input to a number
+    if (isNaN(c)) {
+        fah.value = ''; // Clear Fahrenheit input if Celsius input is not a valid number
+    } else {
+        let f = (c * 9 / 5) + 32;
+        fah.value = f.toFixed(4); // Always show Fahrenheit value with 4 decimal places
+    }
+});
+
+fah.addEventListener('input', function() {
+    let f = parseFloat(this.value); // Convert input to a number
+    if (isNaN(f)) {
+        cel.value = ''; // Clear Celsius input if Fahrenheit input is not a valid number
+    } else {
+        let c = (f - 32) * 5 / 9;
+        cel.value = c.toFixed(4); // Always show Celsius value with 4 decimal places
+    }
+});
+
+
+    </script>
+</body>
+</html>
